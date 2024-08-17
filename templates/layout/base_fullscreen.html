@@ -32,12 +32,31 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
-        
+        <style>
+            .alert-error{
+                background-color: #fad7da;
+                color: #721c24;
+            }
+        </style>
     </head>
 
-    <body>
+    <body style="  background-color: #081b29;">
         <header>
-            <!-- place navbar here -->
+            
+            {% if messages %}
+            
+                {% for message in messages %}
+                 <div
+                    class="alert alert-{{message.tags}} "
+                    role="alert"
+                 >
+                    <strong>{{message}}.</strong>
+                 </div>
+                 
+                {% endfor %}
+            
+            {% endif %}
+                
         </header>
         <main>
         {% block content %}
