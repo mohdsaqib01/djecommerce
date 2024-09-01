@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django_browser_reload",
     "main",
     "products",
-    "cart",
     'django_filters',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -73,7 +72,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
             ],
         },
     },

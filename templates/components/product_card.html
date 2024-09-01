@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center container mt-5">
+    <div class="card p-3 bg-white">
+        <div class="about-product text-center mt-2">
+            <a href="{% url 'product_detail' product.slug %}" class="text-decoration-none">
+                <h4>{{product.title}}</h4>
+                <img src="{{product.image.url}}" class="img-fluid">
+                <div>
+                    <h4>{{product.brand}}</h4>
+                    <h6 class="mt-0 text-black-50">{{product.title}}</h6>
+                </div>
+            </a>
+        </div>
+        <div class="stats mt-2">
+            <div class="d-flex justify-content-between p-price">
+                <span>Our Price</span>
+                <span>${{product.price}}<sup>only</sup></span>
+            </div>
+        </div>
+        <!-- action as customer -->
+        {% if user.is_authenticated and user.groups.all.0.name == 'customer' %}
+        <div class="d-flex justify-content-between mt-2">
+            <a href="{% url 'wishlist_add' product.slug %}" class="btn btn-secondary">
+                <i class="fas fa-heart"></i> Wishlist
+            </a>
+            <a href="#" class="btn btn-success">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+        </div>
+        {% endif %}
+        {% if user.is_authenticated and user.groups.all.0.name == 'seller' %}
+        <div class="d-flex justify-content-between mt-2 gap-2">
+            <a href="{% url 'product_edit' product.slug %}" class="btn btn-warning w-100">
+                <i class="fas fa-edit"></i> Edit
+            </a>
+            <a href="{% url 'product_delete' product.slug %}" class="btn btn-danger w-100">
+                <i class="fas fa-trash"></i> Delete
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
