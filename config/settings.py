@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "main",
     "products",
     'django_filters',
+    'cart'
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

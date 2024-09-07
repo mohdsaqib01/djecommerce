@@ -25,7 +25,7 @@ def login_view(request):
             return redirect('login')
         Groups= user.groups.all()
         print(Groups)
-        if len(Groups)==0 and Groups[0].name !='customer':
+        if len(Groups)==0 or Groups[0].name !='customer':
             messages.error(request,'you are not authorised to login!')
             return redirect('login')
         login(request,user)
@@ -100,7 +100,7 @@ def slogin_view(request):
             return redirect('seller_login')
         Groups= user.groups.all()
         print(Groups)
-        if len(Groups)==0 and Groups[0].name !='seller':
+        if len(Groups)==0 or Groups[0].name !='seller':
             messages.error(request,'you are not authorised to login!')
             return redirect('seller_login')
         login(request,user)

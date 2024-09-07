@@ -51,7 +51,14 @@
                 <i class="fas fa-plus"></i> Add Image
             </a>
             {% else %}
-
+            <div class="d-flex justify-content-start mt-2 gap-2">
+                <a href="{% url 'product_edit' product.slug %}" class="btn btn-warning w-100">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a href="{% url 'product_delete' product.slug %}" class="btn btn-danger w-100">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>

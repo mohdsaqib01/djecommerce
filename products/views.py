@@ -60,7 +60,7 @@ def product_create(request):
             product.slug = slugify(product.title)
             product.save()
             messages.success(request,'Product crezted successfully')
-            return redirect('product_list', slug=product.slug)
+            return redirect('product_detail', slug=product.slug)
         else:
             messages.error(request, 'error creating product')
     return render(
@@ -93,12 +93,12 @@ def product_delete(request, slug):
 def product_detail(request, slug):
     product= get_object_or_404(Product, slug= slug)
     return render(
-         request,'product/detail.html',
-        context={'product: product'} 
+         request,'products/detail.html',
+        context={'product': product} 
     )
    
 def category_product_list(request, category_slug):
-    category= get_object_or_404(category, slug= category_slug)
+    category= get_object_or_404(Category, slug= category_slug)
     return render(
          request,'products/category_wise.html',
         context={'category': category,
