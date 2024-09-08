@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     "crispy_forms",
+    "crispy_forms",
     "crispy_bootstrap5",
     "django_browser_reload",
     "main",
@@ -137,3 +137,7 @@ STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR.joinpath('media')
+
+LOGIN_URL ='login'
+LOGIN_REDIR_URL ='index'
+LOGOUT_REDIR_URL ='index'

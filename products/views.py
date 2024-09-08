@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.utils.text import slugify
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def category_list(request):
     return render(
@@ -109,14 +110,14 @@ def product_wishlist(request):
         request, 'products/wishlist.html',
         context={'wishlist': Wishlist.objects.filter(user=request.user)}
     )
-
+@login_required
 def wishlist_add(request,slug):
     product = get_object_or_404(Product, slug=slug)
     Wishlist.objects.create(product=product, user=request.user)
     messages.success(request, 'Product added to wishlist')
     # back to same page
     return redirect(request.META.get('HTTP_REFERER'))
-
+@login_required
 def wishlist_remove(request,slug):
     product = get_object_or_404(Product, slug=slug)
     Wishlist.objects.filter(product=product, user=request.user).delete()
