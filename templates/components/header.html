@@ -1,3 +1,5 @@
+
+{% load cart_tags %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">DJ Ecommerce</a>
@@ -38,6 +40,12 @@
                 <li class="nav-item">
                     <a class="nav-link px-2" href="#" title="cart">
                         <i class="fas fa-shopping-cart text-warning"></i>
+                        {% cart_item_count as item_count %}
+                        {% if item_count %}
+                        <span class="badge bg-danger">{{ item_count }}</span>
+                        {% endif %}
+                            
+
                     </a>
                 </li>
                 {% if user.is_superuser %}
